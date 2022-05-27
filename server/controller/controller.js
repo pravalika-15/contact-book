@@ -45,12 +45,13 @@ exports.find = (req,res) => {
 // find one contact 
 exports.findone = (req,res) => {
     const id = req.params.id;
-    Userdb.findById(id)
+    Userdb.findById(id,req.body)
     .then(data => {
         if(!data){
             res.status(404).send({message: "cannot find the user"})
         } else {
             res.send(data)
+            console.log(data)
         }
     })
     .catch(err => {
@@ -72,6 +73,7 @@ exports.update = (req,res) => {
             res.status(404).send({ message: "cannot update the user"})
         } else {
             res.send(data)
+            console.log(data)
         }
     })
     .catch(err => {

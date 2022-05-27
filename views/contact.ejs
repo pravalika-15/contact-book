@@ -13,33 +13,20 @@
 <body>
     <div class="container py-5">
        <div class="row px-5">
-        <h1>ALL CONTACTS</h1>
+        <h1><%= data1.name %> </h1>
            
                 
-                <% for(var i = 0; i < users.length; i ++) {%>
-                    <a href="/getcontact?id=<%=users[i]._id%>" class="text-decoration-none text-dark"> 
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <div class="card px-2">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h3 ><%= i + 1 %>. <%= users[i].name %> </h3>
-                                </div>
-                                <div class="col-6">
-                                    <a type="button" class="btn btn-outline-dark" data-id="<%= users[i]._id %>">delete</a>
-                                </div>
+                            <p><%= data1.number %> </p>
+                            <p><%= data1.relation %> </p>
+                            <p><%= data1.address %> </p>
+                            <div class="container px-5 pb-2 pt-5">
+                                <a type="button" class="btn btn-outline-dark" href="/updatecontact?id=<%= data1._id %> ">Update</a>
                             </div>
-                            
-                            
-                            <!-- <p><%= users[i].number %> </p>
-                            <p><%= users[i].relation %> </p>
-                            <p><%= users[i].address %> </p> -->
-                            <!-- <div class="container px-5 pb-2 pt-5">
-                                <a type="button" class="btn btn-outline-dark" href="/updatecontact?id=<%= users[i]._id %> ">Update</a>
-                            </div> -->
                         </div>
                     </div>
-                </a>
-                <% } %> 
+                
        </div>
     </div>
 

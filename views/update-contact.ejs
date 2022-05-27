@@ -13,32 +13,59 @@
 <body>
     <div class="container py-5">
         <h1>UPDATE CONTACT</h1>
-        <form action="" method="post">
+        <form method="post" id="update_contact">
             <div class="py-2 col-md-3 col-sm-3 col-lg-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" class="form-control" placeholder="enter your name">
+                <input type="text" name="name" class="form-control" placeholder="enter your name" value="<%= user.name %>">
             </div>
 
             <div class="py-2 col-md-3 col-sm-3 col-lg-3">
                 <label for="number" class="form-label">Phone number:</label>
-                <input type="text" id="number" class="form-control" placeholder="enter your phone number">
+                <input type="text" name="number" class="form-control" placeholder="enter your phone number" value="<%= user.number %>">
             </div>
 
             <div class="py-2 col-md-3 col-sm-3 col-lg-3">
                 <label for="relation" class="form-label">Relation:</label>
-                <input type="text" id="relation" class="form-control" placeholder="enter your relation">
+                <input type="text" name="relation" class="form-control" placeholder="enter your relation" value="<%= user.relation %>">
             </div>
 
             <div class="py-2 col-md-3 col-sm-3 col-lg-3">
-                <label for="adress" class="form-label">Address:</label>
-                <input type="text" id="adress" class="form-control" placeholder="enter your adress">
+                <label for="address" class="form-label">Address:</label>
+                <input type="text" name="address" class="form-control" placeholder="enter your adress" value="<%= user.address %>">
             </div>
 
             <div class="py-2 col-md-3 col-sm-3 col-lg-3">
-                <a type="button" class="btn btn-outline-dark" href="">Update</a>
+                <button type="submit" class="btn btn-outline-dark" href="">Update</button>
             </div>
 
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- for updating as it is a put request can't submit directly from form -->
+    <script>
+        $("#update_contact").submit(function(event){
+            event.preventDefault()
+            var get_array = $(this).serializeArray();
+            var data = {}
+
+            $.map(get_array,function(n,l){
+                data[n['name']] = n['value']
+            })
+
+            console.log(data);
+            var request = {
+                "url": "",
+                "method":"put",
+                "data":data
+            }
+
+            $.ajax(request).done(function(response){
+                alert("updated successfully!!")
+            })
+        })
+    </script>
+
 </body>
 </html>
