@@ -73,7 +73,20 @@ app.get('/getcontact', (req,res) => {
 // app.get('/delete', (req,res) => {
 //     axios.delete
 // })
-
+app.delete('/delete/:id', async(req,res) => {
+    const id = req.params.id;
+    Userdb.findByIdAndDelete(id)
+    .then(data => {
+        if(!data){
+            res.status(404).send({ message: "cannot delete the user"})
+        } else {
+            res.send({ message: "sucessfully deleted"})
+        }
+    })
+    .catch(err => {
+        res.status(500).send({message : "error!!"})
+    })
+})
 
 
 app.listen(3000, () => {
