@@ -82,19 +82,19 @@ exports.update = (req,res) => {
 }
 
 
-// to delete existing contact
-exports.delete = (req,res) => {
-    const id = req.params.id;
-    Userdb.findByIdAndDelete(id)
-    .then(data => {
-        if(!data){
-            res.status(404).send({ message: "cannot delete the user"})
-        } else {
-            res.send({ message: "sucessfully deleted"})
-        }
-    })
-    .catch(err => {
-        res.status(500).send({message : "error!!"})
-    })
+// // to delete existing contact
+// exports.delete = (req,res) => {
+//     const id = req.params.id;
+//     Userdb.findByIdAndDelete(id)
+//     .then(data => {
+//         if(!data){
+//             res.status(404).send({ message: "cannot delete the user"})
+//         } else {
+//             res.send({ message: "sucessfully deleted"})
+//         }
+//     })
+//     .catch(err => {
+//         res.status(500).send({message : "error!!"})
+//     })
     
-}
+// }
